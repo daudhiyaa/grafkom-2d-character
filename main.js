@@ -84,15 +84,13 @@ function main() {
     ];
 
     viewmatrix[14] = viewmatrix[14] - 3;
-    // viewmatrix[13] = viewmatrix[13];
-    // viewmatrix[12] = viewmatrix[12];
 
     function render(time) {
         if (!freeze) {
             // translasi(modmatrix, 0.01, 0.0, 0.0);
-            // rotasiX(modmatrix, 0.01);
-            // rotasiY(modmatrix, 0.01);
-            // rotasiZ(modmatrix, 0.01);
+            rotasiX(modmatrix, 0.01);
+            rotasiY(modmatrix, 0.01);
+            rotasiZ(modmatrix, 0.01);
         }
     
         // kedalaman (z)
@@ -110,7 +108,7 @@ function main() {
         gl.uniformMatrix4fv(Mmatrix, false, modmatrix);
     
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
-        gl.drawElements(gl.LINES, indices.length, gl.UNSIGNED_SHORT, 0);
+        gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
     
         window.requestAnimationFrame(render);
     }
